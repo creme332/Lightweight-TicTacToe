@@ -1,8 +1,4 @@
-#define ll long long
 #include <iostream>
-
-//#include <utility>
-#include <vector>
 using namespace std;
 
 const char emptyspot = '.';
@@ -10,7 +6,11 @@ const char x = 'X';
 const char o = 'O';
 const char ongoing = 'n'; //game state = ongoing if no winner yet and board not full
 
-char board[3][3] = { {emptyspot,emptyspot,emptyspot},{emptyspot,emptyspot,emptyspot},{emptyspot,emptyspot,emptyspot} };
+char board[3][3] = { 
+    {emptyspot,emptyspot,emptyspot},
+    {emptyspot,emptyspot,emptyspot},
+    {emptyspot,emptyspot,emptyspot}
+};
 void outputboard() {
     cout << endl;
     for (int row = 0;row < 3;row++) {
