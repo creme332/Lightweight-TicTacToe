@@ -2,17 +2,15 @@
 #include <stdlib.h> //used to clear terminal screen each round
 using namespace std;
 
-const char emptyspot = '.';
-const char x = 'X';
-const char o = 'O';
+const char emptyspot = '.'; const char x = 'X'; const char o = 'O';
 const char ongoing = 'n'; //game state = ongoing if no winner yet and board not full
 
 char board[3][3] = { 
-    {emptyspot,emptyspot,o},
-    {emptyspot,emptyspot,x},
-    {x,emptyspot,o}
+    {emptyspot,emptyspot,emptyspot},
+    {emptyspot,emptyspot,emptyspot},
+    {emptyspot,emptyspot,emptyspot}
 };
-void outputboard() {
+void OutputBoard() {
     system("CLS"); //clear previous board from terminal
     cout << "Use format <row><space><column> where row, column are 1-3" << endl;
     cout <<"_____________"<< endl;
@@ -33,16 +31,16 @@ void outputboard() {
         }
     }
 };
-char winner() { //checks for winner
-    // "x" if x won and "o" if o won 
-    // "n" if game is ongoing
-    // "d" if draw 
+char UpdateGameState() { 
+    // returns "x" if x won and "o" if o won 
+    // returns "n" if game is ongoing
+    // returns "d" if draw 
 
     int xcount=0, ocount=0; //counts number of x and o
 
     //horizontal check
-    for (int row = 0;row < 4;row++) {
-        for (int col = 0;col < 4;col++) {
+    for (int row = 0;row < 3;row++) {
+        for (int col = 0;col < 3;col++) {
             if (board[row][col] == x) {xcount++;}
             if (board[row][col] == o) {ocount++;}
         }
@@ -53,8 +51,8 @@ char winner() { //checks for winner
 
     //vertical check
     xcount = 0; ocount = 0;
-    for (int col = 0;col < 4;col++) {
-        for (int row = 0;row < 4;row++) {
+    for (int col = 0;col < 3;col++) {
+        for (int row = 0;row < 3;row++) {
             if (board[row][col] == x) {xcount++;}
             if (board[row][col] == o) {ocount++;}
         }
@@ -87,41 +85,35 @@ char winner() { //checks for winner
     }
     return 'd'; // draw
 }
-void updateboard(bool turn, int row, int col) {
+void UpdateBoard(bool turn, int row, int col) {
     //coordinates have already been validated
     // row n has index n-1 and column k has index k-1
     board[row-1][col-1] = (turn == 0)? o : x;
 }
-bool validatecoordinates(int row, int col) {
+bool IsValid(int row, int col) {
     if (row > 0 && row < 4 && col>0 && col < 4 && board[row-1][col-1]==emptyspot)return 1;
     return 0;
 }
 int main()
 {
-    //MUST TEST winner() throughly. There's a bug.
     bool turnX = 0;// 0 - player o  1 - player x
     char state = ongoing;
     int row, col;
 
     while (state == ongoing) {
-        outputboard();
+        OutputBoard();
         cout<< ((turnX==0)? "O's turn" : "X's turn") << endl;
         cin >> row >> col;
 
-        while(validatecoordinates(row, col) == 0){
+        while(IsValid(row, col) == 0){
             cout<<"Invalid coordinates. Enter again."<<endl;
             cin >> row >> col;
         }
 
-        updateboard(turnX, row, col);
-        state = winner();
+        UpdateBoard(turnX, row, col);
+        state = UpdateGameState();
         turnX = !(turnX); //swap turns 
     }
-
-    outputboard();
-    if (state == o) {cout << "Player O has won!" << endl;}
-    else {
-        cout<< ((state == x)? "Player X has won!" : "Draw" )<< endl;
-    }
- 
+    OutputBoard();
+    cout<<((state==o)? "Player O has won!":((state == x)? "Player X has won!" : "Draw"))<<endl;
 }
