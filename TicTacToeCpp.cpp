@@ -35,7 +35,9 @@ void outputboard() {
 };
 char winner() { //checks for winner
     // "x" if x won and "o" if o won 
-    // "draw" if draw / "ON" if game is ongoing
+    // "n" if game is ongoing
+    // "d" if draw 
+
     int xcount, ocount; //counts number of x and o
 
     //horizontal check
@@ -79,7 +81,14 @@ char winner() { //checks for winner
     if (board[0][0] == o && board[1][1] == o && board[2][2] == o) {
         return o;
     }
-    return ongoing;
+
+    //check if board has an emptyspot => can keep playing
+    for(int i=0;i<3;i++){
+        for(int j=0;j<3;j++){
+            if(board[i][j]==emptyspot)return ongoing;
+        }
+    }
+    return 'd';
 }
 void updateboard(bool turn, int row, int col) {
     //coordinates have already been validated
@@ -96,6 +105,7 @@ bool validatecoordinates(int row, int col) {
 }
 int main()
 {
+    //MUST TEST winner() throughly. There's a bug.
     bool turnX = 0;// 0 - player o  1 - player x
     char state=ongoing;
     int row, col;
@@ -106,15 +116,14 @@ int main()
         else {cout << "X's turn" << endl;}
         cin >> row >> col;
 
-        if (validatecoordinates(row, col) == 0) { //invalid coordinates
-            cout << "Invalid coordinates" << endl;
-            state = ongoing;
+        while(validatecoordinates(row, col) == 0){
+            cout<<"Invalid coordinates. Enter again."<<endl;
+            cin >> row >> col;
         }
-        else { //valid coordinates
-            updateboard(turnX, row, col);
-            state = winner();
-            turnX = !(turnX); //swap turns 
-        }
+
+        updateboard(turnX, row, col);
+        state = winner();
+        turnX = !(turnX); //swap turns 
     }
 
     outputboard();
