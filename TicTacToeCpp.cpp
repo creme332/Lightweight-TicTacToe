@@ -14,16 +14,23 @@ char board[3][3] = {
 };
 void outputboard() {
     system("CLS"); //clear previous board from terminal
-    cout << "Rules: Use format <row><space><column> where row, column are 1-3" << endl;
-    cout << endl;
+    cout << "Use format <row><space><column> where row, column are 1-3" << endl;
+    cout <<"_____________"<< endl;
     for (int row = 0;row < 3;row++) {
         for (int col = 0;col < 3;col++) {
-            cout << board[row][col] << "     ";
+            if(col==2){
+                cout << "| " <<board[row][col] << " |";
+            }else{
+                cout << "| " <<board[row][col] << " ";
+            }
         }
-        cout << endl;
-        cout << endl;
-        cout << endl;
-        cout << endl;
+        cout<<endl;
+        if(row==2){
+        cout <<"|___|___|___|"<< endl;
+
+        }else{
+        cout <<"|---|---|---|"<< endl;
+        }
     }
 };
 char winner() { //checks for winner
