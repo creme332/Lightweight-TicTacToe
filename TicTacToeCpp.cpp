@@ -31,58 +31,28 @@ void OutputBoard() {
         }
     }
 };
-char UpdateGameState() { 
-    // returns "x" if x won and "o" if o won 
-    // returns "n" if game is ongoing
+char UpdateGameState() {
+    // returns "X" if x won and "O" if o won 
+    // returns "n" if game is ongoing - game has empty spots
     // returns "d" if draw 
+    char k[2] = {x,o};
+    bool HasEmptySpot = 0;
 
-    int xcount=0, ocount=0; //counts number of x and o
-
-    //horizontal check
-    for (int row = 0;row < 3;row++) {
-        for (int col = 0;col < 3;col++) {
-            if (board[row][col] == x) {xcount++;}
-            if (board[row][col] == o) {ocount++;}
-        }
-        if (xcount == 3) {return x;}
-        if (ocount == 3) {return o;}
-        xcount = 0; ocount = 0;
-    }
-
-    //vertical check
-    xcount = 0; ocount = 0;
-    for (int col = 0;col < 3;col++) {
-        for (int row = 0;row < 3;row++) {
-            if (board[row][col] == x) {xcount++;}
-            if (board[row][col] == o) {ocount++;}
-        }
-        if (xcount == 3) {return x;}
-        if (ocount == 3) {return o;}
-        xcount = 0; ocount = 0;
-    }
-
-    //positive diagonal check
-    if (board[2][0] == x && board[1][1] == x && board[0][2] == x) {
-        return x;
-    }
-    if (board[2][0] == o && board[1][1] == o && board[0][2] == o) {
-        return o;
-    }
-
-    //negative diagonal check 
-    if (board[0][0] == x && board[1][1] == x && board[2][2] == x) {
-        return x;
-    }
-    if (board[0][0] == o && board[1][1] == o && board[2][2] == o) {
-        return o;
-    }
-
-    //check if board has an emptyspot => can keep playing
-    for(int i=0;i<3;i++){
-        for(int j=0;j<3;j++){
-            if(board[i][j] == emptyspot)return ongoing;
+    for (int i = 0;i < 2;i++) {//for each player
+        int count[4] = { 0,0,0,0 }; //count along each direction
+        for (int r = 0;r < 3;r++) {
+            for (int c = 0;c < 3;c++) {
+                if (board[r][c] == k[i]) {count[0]++;} //count horizontally
+                if (board[c][r] == k[i]) {count[1]++; } //count vertically
+                if (r == c && board[r][c] == k[i]) { count[2]++;} //count along - diagonal
+                if (r + c == 2 && board[r][c] == k[i]) {count[3]++;}  //count along + diagonal
+                if (board[r][c] == emptyspot)HasEmptySpot=1;
+            }
+            for(int m=0;m<4;m++){if(count[m] == 3)return k[i];}//return winner if any
+            count[0] = 0;count[1] = 0; //reset only for orthogonal directions
         }
     }
+    if (HasEmptySpot)return ongoing;
     return 'd'; // draw
 }
 void UpdateBoard(bool turn, int row, int col) {
