@@ -8,4 +8,4 @@ To-Do :
 - [x] Optimise UpdateGameState()
 - [ ] Update this README : Add screenshots etc,...
 - [ ] Save grid in a string instead of vector
-- [ ] Use OOP
+- [ ] Use OOP + header files
