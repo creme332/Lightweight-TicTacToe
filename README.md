@@ -9,3 +9,4 @@ To-Do :
 - [ ] Update this README : Add screenshots etc,...
 - [ ] Save grid in a string instead of vector
 - [ ] Use OOP + header files
+- [ ] Make shortest TicTacToe ever
