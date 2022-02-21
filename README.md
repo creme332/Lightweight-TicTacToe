@@ -10,3 +10,5 @@ To-Do :
 - [ ] Save grid in a string instead of vector
 - [ ] Use OOP + header files
 - [ ] Make shortest TicTacToe ever
+
+https://codereview.stackexchange.com/questions/183594/simple-tic-tac-toe-with-minimax-algorithm
