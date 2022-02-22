@@ -1,7 +1,6 @@
 #include <iostream> 
 const char x = 'X'; const char o = 'O'; const char null = '.';
 std::string board = "...\n...\n...\n";
-
 void OutputBoard() {
     for (auto ch : board) {std::cout<<ch;}
     std::cout << "\n";
@@ -29,7 +28,6 @@ int GameState() {
     }
     return (HasEmptySpot) ? 2 : 0;
 }
-
 int minimax(int depth, bool maximizingplayer) {
     int k = GameState();
     if (abs(k) == 1 || k == 0 )return 100*k; //Return 100 if X won, -100 if O won, and 0 if draw.
@@ -45,7 +43,6 @@ int minimax(int depth, bool maximizingplayer) {
     }
     return maximizingplayer==1 ? MaxEval : MinEval;
 }
-
 void AImove() {
     int bestmove=-1, MaxEval = INT_MIN;
 
@@ -62,7 +59,6 @@ void AImove() {
     }
     board[bestmove] = x;
 }
-
 int main(){
     bool AIturn=0; int state = 2,r, c;
     std::cout << "AI starts first? 1/0 ";
@@ -78,5 +74,4 @@ int main(){
         OutputBoard();
     }
     std::cout << ((state == 1) ? "AI won!" : "Draw") << "\n";
-    system("pause");
 }
