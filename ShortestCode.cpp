@@ -38,14 +38,13 @@ int minimax(int depth, bool maximizingplayer, int alpha, int beta) {
                board[i]= maximizingplayer? x:o;
                if (maximizingplayer) {
                    MaxEval = std::max(MaxEval, minimax(depth+1,0,alpha,beta) - depth);
-                   board[i] = null;
                    alpha = std::max(alpha, MaxEval);
                }
                else {
                    MinEval = std::min(MinEval, minimax(depth+1, 1,alpha,beta) + depth);
-                   board[i] = null;
                    beta = std::min(beta, MinEval);
                }
+                board[i] = null;
                if (beta <= alpha)break;
          }
     }
