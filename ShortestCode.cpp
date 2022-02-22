@@ -28,7 +28,7 @@ int GameState() {
     }
     return (HasEmptySpot) ? 2 : 0;
 }
-int minimax(int depth, bool maximizingplayer) {
+int minimax(int depth, bool maximizingplayer, int alpha, int beta) {
     int k = GameState();
     if (abs(k) == 1 || k == 0 )return 100*k; //Return 100 if X won, -100 if O won, and 0 if draw.
 
@@ -36,9 +36,17 @@ int minimax(int depth, bool maximizingplayer) {
     for (int i = 0;i < board.length();i++) {
          if (board[i] == null) {
                board[i]= maximizingplayer? x:o;
-               if (maximizingplayer) {MaxEval = std::max(MaxEval, minimax(depth+1,0) - depth);}
-               else {MinEval = std::min(MinEval, minimax(depth+1, 1) + depth);}
-               board[i]= null;
+               if (maximizingplayer) {
+                   MaxEval = std::max(MaxEval, minimax(depth+1,0,alpha,beta) - depth);
+                   board[i] = null;
+                   alpha = std::max(alpha, MaxEval);
+               }
+               else {
+                   MinEval = std::min(MinEval, minimax(depth+1, 1,alpha,beta) + depth);
+                   board[i] = null;
+                   beta = std::min(beta, MinEval);
+               }
+               if (beta <= alpha)break;
          }
     }
     return maximizingplayer==1 ? MaxEval : MinEval;
@@ -49,7 +57,7 @@ void AImove() {
     for (int i = 0;i < board.length();i++) {
         if (board[i] == null) {
             board[i] = x;
-            int eval = minimax(0, 0);
+            int eval = minimax(0, 0,-9999,9999);
             if (eval > MaxEval){
                 bestmove = i;
                 MaxEval = eval;
