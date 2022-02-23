@@ -1,4 +1,4 @@
 # TicTacToeAI
-Lightweight version of TicTacToe AI. Minimax algorithm with alpha beta pruning is used.
+Lightweight version of TicTacToe AI implemented with monimax algorithm + alpha beta pruning.
 
 Input format : `<row><space><colum>`
