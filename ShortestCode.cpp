@@ -4,8 +4,7 @@
 const char x = 'X'; const char o = 'O'; const char null = '.';
 std::string board = "...\n...\n...\n";
 void OutputBoard() {
-    for (auto ch : board) {std::cout<<ch;}
-    std::cout << "\n";
+    std::cout << board <<"\n";
 };
 int GameState() {
     // 1 : x won. -1 : o won.  0 : draw.  2 : keep playing.
@@ -76,7 +75,7 @@ int main(){
          if (AIturn) {AImove();}
          else {
             std::cin >> r>>c;
-            if(board[4*(r-1)+c-1] ==null)board[4 * (r - 1) + c - 1] = o;
+            if(board[4*(r-1)+c-1] == null)board[4 * (r - 1) + c - 1] = o;
         }
         state = GameState();
         AIturn = !(AIturn); 
