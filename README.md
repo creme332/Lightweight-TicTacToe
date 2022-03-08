@@ -8,7 +8,7 @@ AI is `X` and you are `O`
 Input format of coordinates : `<row><space><colum>`
 
 row, column must be an integer between 1 and 3 inclusive. An invalid input will either waste your turn or will crash program
-# Gameplay example #
+# Gameplay #
 
 ## AI starts first ##
 ```cpp
