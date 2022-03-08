@@ -3,9 +3,6 @@
 #include <climits>
 const char x = 'X'; const char o = 'O'; const char null = '.';
 std::string board = "...\n...\n...\n";
-void OutputBoard() {
-    std::cout << board <<"\n";
-};
 int GameState() {
     // 1 : x won. -1 : o won.  0 : draw.  2 : keep playing.
     char player[2] = {x,o};
@@ -79,7 +76,7 @@ int main(){
         }
         state = GameState();
         AIturn = !(AIturn); 
-        OutputBoard();
+        std::cout << board <<"\n";
     }
     std::cout << ((state == 1) ? "AI won!" : "Draw") << "\n";
 }
