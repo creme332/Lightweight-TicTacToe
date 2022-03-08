@@ -1,5 +1,5 @@
 # Terminal based TicTacToe AI
-This unbeatable TicTacToe AI was implemented with less than 50 lines of code. 
+This unbeatable TicTacToe AI was implemented in as few lines of code as possible without sacrifing readability and performance.
 # How to play #
 Run the code from main.cpp using a compiler of your choice. Or alternatively, run the code on an [online compiler](https://www.onlinegdb.com/online_c++_compiler)
 
