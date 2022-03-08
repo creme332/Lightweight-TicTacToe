@@ -1,4 +1,6 @@
 #include <iostream> 
+#include <iostream>
+#include <climits>
 const char x = 'X'; const char o = 'O'; const char null = '.';
 std::string board = "...\n...\n...\n";
 void OutputBoard() {
