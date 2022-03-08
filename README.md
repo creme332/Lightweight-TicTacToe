@@ -9,7 +9,9 @@ Input format of coordinates : `<row><space><colum>`
 
 row, column must be an integer between 1 and 3 inclusive. An invalid input will either waste your turn or will crash program
 # Gameplay example #
-```
+
+## AI starts first ##
+```cpp
 AI starts first? 1/0 1
 X..
 ...
@@ -43,5 +45,54 @@ XXO
 O.X
 
 AI won!
+
+```
+
+## You start first ##
+```cpp
+AI starts first? 1/0 0
+2 2
+...
+.O.
+...
+
+X..
+.O.
+...
+
+1 2
+XO.
+.O.
+...
+
+XO.
+.O.
+.X.
+
+2 3
+XO.
+.OO
+.X.
+
+XO.
+XOO
+.X.
+
+3 1
+XO.
+XOO
+OX.
+
+XOX
+XOO
+OX.
+
+3 3
+XOX
+XOO
+OXO
+
+Draw
+
 
 ```
