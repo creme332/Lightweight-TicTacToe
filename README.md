@@ -5,9 +5,9 @@ Run the code from main.cpp using a compiler of your choice. Or alternatively, ru
 
 AI is `X` and you are `O`
 
-Input format of coordinates : `<row><space><colum>`
+Input format of coordinates : `<row><space><column>`
 
-row, column must be an integer between 1 and 3 inclusive. An invalid input will either waste your turn or will crash program
+`<row>`, `<column>` must be an integer between 1 and 3 inclusive. An invalid input will end your turn or will crash program.
 # Gameplay #
 
 ## AI starts first ##
