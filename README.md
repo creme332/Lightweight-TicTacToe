@@ -1,5 +1,5 @@
-# Terminal based TicTacToe AI
-This unbeatable TicTacToe AI was implemented in as few lines of code as possible without sacrifing readability and performance. AI uses minimax algorithm with alpha-beta pruning.
+# Terminal-based TicTacToe AI
+This unbeatable TicTacToe AI was implemented in as few lines of code as possible without sacrificing readability and performance. AI uses minimax algorithm with alpha-beta pruning.
 # How to play #
 Run the code from main.cpp using a compiler of your choice. Or alternatively, run the code on an [online compiler](https://www.onlinegdb.com/online_c++_compiler)
 
