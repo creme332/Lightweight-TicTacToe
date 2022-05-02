@@ -1,6 +1,6 @@
-# Terminal-based TicTacToe AI
+# 🎮 Terminal-based TicTacToe AI #
 This unbeatable TicTacToe AI was implemented in as few lines of code as possible without sacrificing readability and performance. AI uses minimax algorithm with alpha-beta pruning.
-# How to play #
+# 🚀 Getting started #
 Run the code from main.cpp using a compiler of your choice. Or alternatively, run the code on an [online compiler](https://www.onlinegdb.com/online_c++_compiler)
 
 AI is `X` and you are `O`
@@ -8,7 +8,7 @@ AI is `X` and you are `O`
 Input format of coordinates : `<row><space><column>`
 
 `<row>`, `<column>` must be an integer between 1 and 3 inclusive. An invalid input will end your turn or will crash program.
-# Gameplay #
+# 🎥 Gameplay #
 
 ## AI starts first ##
 ```cpp
